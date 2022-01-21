@@ -65,7 +65,11 @@ class Dashboard extends CI_Controller
 				// Convert YOB to age
 				$current_year = date("Y");
 				foreach ($user_data as $key => $user) {
-					$user_data[$key]['age'] = $current_year - $user['yob'];
+					if (isset($user['yob']) && $user['yob'] != 0 && $user['yob'] < $current_year) {
+						$user_data[$key]['age'] = $current_year - $user['yob'];
+					} else {
+						$user_data[$key]['age'] = NULL;
+					}
 				}
 
 				// Create Table Rows
@@ -84,6 +88,28 @@ class Dashboard extends CI_Controller
 				$response['success'] = false;
 				$response['message'] = $e->getMessage();
 			}
+		}
+
+		if (isset($_GET['exportcsv']) || $request['export'] == "1") {
+			// file name 
+			$filename = 'users_data_' . time() . '.csv';
+			header("Content-Description: File Transfer");
+			header("Content-Disposition: attachment; filename=$filename");
+			header("Content-Type: application/csv; ");
+
+			// file creation 
+			$file = fopen('php://output', 'w');
+
+			$header = array("ID", "First Name", "Last Name", "Email", "Phone", "OS", "App Version", "Age", "Gender", "Height", "Weight", "BMI", "BMR");
+
+			fputcsv($file, $header);
+			foreach ($user_data as $key => $row) {
+				$line = array($row['id'], $row['fname'], $row['lname'], $row['email'], $row['phone'], $row['os'], $row['appversion'], $row['age'], $row['gender'], $row['height'], $row['weight'], $row['bmi'], $row['bmr']);
+				fputcsv($file, $line);
+			}
+
+			fclose($file);
+			exit;
 		}
 
 		if ($request['isAJAX'] == "1") {

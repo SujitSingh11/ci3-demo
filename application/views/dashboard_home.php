@@ -74,6 +74,8 @@
 											<input type="hidden" name="isAJAX" value="0" />
 											<div class="col-md-4 col-sm-4 form-group">
 												<button type="submit" class="btn btn-success pull-right">Submit</button>
+
+												<button type="submit" name="exportcsv" class="btn btn-info pull-right">Export CSV</button>
 											</div>
 										</div>
 									</form>
@@ -149,6 +151,8 @@
 											<input type="hidden" id="isAJAX" name="isAJAX" value="1" />
 											<div class="col-md-4 col-sm-4 form-group">
 												<button type="submit" class="btn btn-success pull-right">Submit</button>
+
+												<button id="exportcsv" name="exportcsv" class="btn btn-info pull-right">Export CSV</button>
 											</div>
 										</div>
 									</form>
