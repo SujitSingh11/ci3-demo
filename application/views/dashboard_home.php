@@ -194,9 +194,15 @@
 											<th>BMR</th>
 										</tr>
 									</thead>
-									<tbody id="tableRows">
-										<?php echo $this->session->flashdata('tableData'); ?>
-									</tbody>
+									<?php
+									$tableData = $this->session->flashdata('tableData');
+									if ($tableData) {
+										echo $tableData;
+									} else {
+										echo "<tbody id='tableRows'></tbody>";
+									}
+									?>
+
 								</table>
 							</div>
 						</div>
