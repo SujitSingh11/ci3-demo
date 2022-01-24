@@ -66,8 +66,6 @@
 
 			$.get('<?php echo base_url() ?>dashboard/get_user_data', formData, function(data) {
 					console.log(data);
-					// const tableData = JSON.parse(data);
-					// $("#tableRows").replaceWith(tableData.table);
 					var blob = new Blob([data], {
 						type: 'text/csv'
 					});

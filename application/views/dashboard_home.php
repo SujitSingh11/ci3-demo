@@ -149,6 +149,7 @@
 												<span class="fa fa-shopping-cart form-control-feedback right" aria-hidden="true"></span>
 											</div>
 											<input type="hidden" id="isAJAX" name="isAJAX" value="1" />
+											<input type="hidden" id="export" name="export" value="1" />
 											<div class="col-md-4 col-sm-4 form-group">
 												<button type="submit" class="btn btn-success pull-right">Submit</button>
 
