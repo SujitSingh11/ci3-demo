@@ -36,8 +36,24 @@
 	<link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
 
 	<style>
+		.toggle {
+			padding-top: 2em;
+		}
+
 		.form-control-feedback {
-			margin-top: 0px !important;
+			margin-top: 6px !important;
+		}
+
+		.form-control-feedback.fa {
+			line-height: 26px !important;
+		}
+
+		.show {
+			display: inline-block !important;
+		}
+
+		.inner {
+			display: block !important;
 		}
 
 		li {
@@ -168,10 +184,6 @@
 
 		input[type=radio] {
 			vertical-align: text-bottom;
-		}
-
-		.toggle {
-			padding-top: 2em;
 		}
 	</style>
 

@@ -33,9 +33,9 @@
 									</div>
 								</div>
 								<select class="col-md-4 col-sm-4 form-group selectpicker" data-live-search="true" name="status" title="Select Request Status">
-									<option>Mustard</option>
-									<option>Ketchup</option>
-									<option>Barbecue</option>
+									<option data-content="Mustard">Mustard</option>
+									<option data-content="Ketchup">Ketchup</option>
+									<option data-content="Barbecue">Barbecue</option>
 								</select>
 							</div>
 
@@ -73,6 +73,7 @@
 	?>
 		<div class="">
 			<div class="clearfix"></div>
+			<?php print_r($request) ?>
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="x_panel">
