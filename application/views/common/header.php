@@ -7,21 +7,25 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="https://beatoapp.com/favicon.ico">
 
 	<title>BeatO</title>
 
 	<!-- Normalize CSS -->
 	<link href="<?php echo base_url() ?>assets/vendors/normalize-css/normalize.css" rel="stylesheet" />
 	<!-- Bootstrap -->
-	<link href="<?php echo base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="<?php echo base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
-	<link href="<?php echo base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="<?php echo base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- NProgress -->
-	<link href="<?php echo base_url() ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet" />
-	<!-- Custom Theme Style -->
-	<link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet" />
+	<link href="<?php echo base_url() ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
-	<link rel="icon" href="https://beatoapp.com/favicon.ico">
+	<!-- Custom Theme Style -->
+	<link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
 
 	<style>
 		/* Chrome, Safari, Edge, Opera */
@@ -34,6 +38,51 @@
 		/* Firefox */
 		input[type=number] {
 			-moz-appearance: textfield;
+		}
+
+		.table>tbody>tr>td,
+		.table>tbody>tr>th,
+		.table>tfoot>tr>td,
+		.table>tfoot>tr>th,
+		.table>thead>tr>td,
+		.table>thead>tr>th {
+			padding: 11px;
+		}
+
+		/* LOADER 4 */
+
+		#loader-4 span {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			background-color: #3498db;
+			margin: 35px 5px;
+			opacity: 0;
+		}
+
+		#loader-4 span:nth-child(1) {
+			animation: opacitychange 1s ease-in-out infinite;
+		}
+
+		#loader-4 span:nth-child(2) {
+			animation: opacitychange 1s ease-in-out 0.33s infinite;
+		}
+
+		#loader-4 span:nth-child(3) {
+			animation: opacitychange 1s ease-in-out 0.66s infinite;
+		}
+
+		@keyframes opacitychange {
+
+			0%,
+			100% {
+				opacity: 0;
+			}
+
+			60% {
+				opacity: 1;
+			}
 		}
 	</style>
 </head>
@@ -65,7 +114,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="<?= base_url() ?>userordercallback">
+									<a href="<?= base_url() ?>userorder">
 										<i class="fa fa-cubes"></i>
 										Order Callback
 										<span class="fa fa-chevron-right"></span>

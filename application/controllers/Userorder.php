@@ -10,6 +10,8 @@ class Userorder extends CI_Controller
 
 	public function index()
 	{
+		$this->load->view('common/header');
 		$this->load->view('user_order_callback');
+		$this->load->view('common/footer');
 	}
 }

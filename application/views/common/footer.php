@@ -13,17 +13,43 @@
 <script src="<?php echo base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="<?php echo base_url() ?>assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="<?php echo base_url() ?>assets/vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="<?php echo base_url() ?>assets/vendors/nprogress/nprogress.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="<?php echo base_url() ?>assets/chainedjs/jquery.chained.selects.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="<?php echo base_url() ?>assets/build/js/custom.min.js"></script>
 
+
 <!-- AJAX Form Validation -->
 <script>
 	$(document).ready(function() {
+		// To style all selects
+		$('select').selectpicker();
+
+		$('.input-daterange').datepicker({
+			format: 'yyyy-mm-dd',
+			autoclose: true,
+			calendarWeeks: false,
+			todayBtn: "linked",
+			clearBtn: true,
+			disableTouchKeyboard: true
+		});
+
 		$("#userSearchForm").submit(function(event) {
 			event.preventDefault();
 			$("#tableRows").empty();
