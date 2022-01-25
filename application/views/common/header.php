@@ -14,13 +14,21 @@
 	<!-- Normalize CSS -->
 	<link href="<?php echo base_url() ?>assets/vendors/normalize-css/normalize.css" rel="stylesheet" />
 	<!-- Bootstrap -->
-	<link href="<?php echo base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- <link href="<?php echo base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+	<!-- Bootstrap -->
+	<link href="<?php echo base_url() ?>assets/vendors/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
 	<link href="<?php echo base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- NProgress -->
 	<link href="<?php echo base_url() ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/vendors/Ionicons/css/ionicons.min.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/vendors/AdminLTE/AdminLTE.min.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/vendors/AdminLTE/_all-skins.min.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 	<link href="<?php echo base_url() ?>assets/vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/vendors/AdminLTE/select2.min.css" rel="stylesheet">
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
@@ -28,63 +36,145 @@
 	<link href="<?php echo base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
 
 	<style>
-		/* Chrome, Safari, Edge, Opera */
-		input::-webkit-outer-spin-button,
-		input::-webkit-inner-spin-button {
-			-webkit-appearance: none;
+		.form-control-feedback {
+			margin-top: 0px !important;
+		}
+
+		li {
+			list-style-type: none;
+			padding: 0px;
+			margin: 0px;
+		}
+
+		.canvas_class {
+			max-width: 80%;
+		}
+
+		.max_width {
+			visibility: hidden;
+		}
+
+		ul.bar_tabs>li a {
+			padding: 0 !important;
+		}
+
+		ul.bar_tabs>li {
+			margin-left: 4px;
+		}
+
+		ul.bar_tabs {
+			padding-left: 0px;
+		}
+
+		ul.bar_tabs>li {
+			font-size: 12px;
+		}
+
+		.tag-editor {
+			height: 100px;
+			width: auto;
+			border-color: rgb(169, 169, 169);
+			overflow-y: scroll;
+		}
+
+		.ui-widget-content {
+			height: 400px;
+			width: 200px;
+			background-color: #fff;
+			overflow-y: scroll !important;
+		}
+
+		.ui-widget-content li:hover {
+			background: #e0eaf1 !important;
+		}
+
+		#loader {
+			border: 16px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 16px solid #3498db;
+			width: 120px;
+			height: 120px;
+			-webkit-animation: spin 2s linear infinite;
+			/* Safari */
+			animation: spin 2s linear infinite;
+		}
+
+		/* Safari */
+		@-webkit-keyframes spin {
+			0% {
+				-webkit-transform: rotate(0deg);
+			}
+
+			100% {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		.user-details-form label {
+			text-align: left !important;
+		}
+
+		form strong {
+			font-size: 16px;
+		}
+
+		input[type='checkbox'] {
+			vertical-align: -2PX;
+		}
+
+		.seperate_box {
+			margin-top: 5px;
+		}
+
+		#loading {
+			text-align: center;
+			background: url('<?php echo base_url(); ?>assets/img/loader.gif') no-repeat center;
+			height: 356px;
+		}
+
+		.pagination {
 			margin: 0;
 		}
 
-		/* Firefox */
-		input[type=number] {
-			-moz-appearance: textfield;
+		.x_content {
+			padding: 0 5px 6px;
 		}
 
-		.table>tbody>tr>td,
-		.table>tbody>tr>th,
-		.table>tfoot>tr>td,
-		.table>tfoot>tr>th,
-		.table>thead>tr>td,
-		.table>thead>tr>th {
-			padding: 11px;
+		.seperate_box {
+			margin-top: 5px;
 		}
 
-		/* LOADER 4 */
+		.seperate_box .x_title {
+			background: #e9e4f7;
+			border-radius: 10px;
+		}
 
-		#loader-4 span {
+		.x_title strong {
 			display: inline-block;
-			width: 20px;
-			height: 20px;
-			border-radius: 100%;
-			background-color: #3498db;
-			margin: 35px 5px;
-			opacity: 0;
+			padding-top: 8px;
+			padding-left: 8px;
+			font-size: 16px;
 		}
 
-		#loader-4 span:nth-child(1) {
-			animation: opacitychange 1s ease-in-out infinite;
+		input[type=radio] {
+			vertical-align: text-bottom;
 		}
 
-		#loader-4 span:nth-child(2) {
-			animation: opacitychange 1s ease-in-out 0.33s infinite;
-		}
-
-		#loader-4 span:nth-child(3) {
-			animation: opacitychange 1s ease-in-out 0.66s infinite;
-		}
-
-		@keyframes opacitychange {
-
-			0%,
-			100% {
-				opacity: 0;
-			}
-
-			60% {
-				opacity: 1;
-			}
+		.toggle {
+			padding-top: 2em;
 		}
 	</style>
+
 </head>
 
 <body class="nav-md">
@@ -150,19 +240,21 @@
 			<!-- top navigation -->
 			<div class="top_nav">
 				<div class="nav_menu">
-					<div class="nav toggle">
-						<a id="menu_toggle"><i class="fa fa-bars"></i></a>
-					</div>
-					<nav class="nav navbar-nav">
-						<ul class="navbar-right">
-							<li class="nav-item dropdown open" style="padding-left: 15px">
-								<a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-									<img src="<?php echo base_url() ?>assets/img/user.png" alt="profile" />Sujitkumar Singh
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="">
+								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<img src="<?php echo base_url() ?>assets/img/user.png" alt="">
+									Hello Sujitkumar
+									<span class=" fa fa-angle-down"></span>
 								</a>
-								<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="javascript:;"> Profile</a>
-									<a class="dropdown-item" href="javascript:;"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-								</div>
+								<ul class="dropdown-menu dropdown-usermenu pull-right" style="Z-index: 9999999;">
+									<li><a href="#">Profile</a></li>
+									<li><a href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+								</ul>
 							</li>
 						</ul>
 					</nav>
