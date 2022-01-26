@@ -10,10 +10,20 @@ class UserOrderCallback extends CI_Model
 
 	public function getSource()
 	{
+		$this->db->select('source');
+		$this->db->distinct();
+		$this->db->from('userordercallback');
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 
 	public function getStatus()
 	{
+		$this->db->select('status');
+		$this->db->distinct();
+		$this->db->from('userordercallback');
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 
 	public function getOrderCallbackData($limit, $start, $request)

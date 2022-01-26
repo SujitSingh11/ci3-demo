@@ -33,9 +33,16 @@
 									</div>
 								</div>
 								<select class="col-md-4 col-sm-4 form-group selectpicker" data-live-search="true" name="status" title="Select Request Status">
-									<option data-content="Mustard">Mustard</option>
-									<option data-content="Ketchup">Ketchup</option>
-									<option data-content="Barbecue">Barbecue</option>
+									<?php
+									foreach ($status as $key => $row) {
+										if (strlen($row['status']) > 0) {
+											$option = substr($row['status'], 0, 50);
+									?>
+											<option data-content="<?= $option ?>" value="<?= $row['status'] ?>"><?= $option ?></option>
+									<?php
+										}
+									}
+									?>
 								</select>
 							</div>
 
@@ -49,9 +56,16 @@
 									<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 								</div>
 								<select class="col-md-4 col-sm-4 form-group selectpicker" data-live-search="true" name="source" title="Select Source">
-									<option>Mustard</option>
-									<option>Ketchup</option>
-									<option>Barbecue</option>
+									<?php
+									foreach ($source as $key => $row) {
+										if (strlen($row['source']) > 0) {
+											$option = substr($row['source'], 0, 50);
+									?>
+											<option data-content="<?= $option ?>" value="<?= $row['source'] ?>"><?= $option ?></option>
+									<?php
+										}
+									}
+									?>
 								</select>
 							</div>
 
@@ -74,6 +88,7 @@
 		<div class="">
 			<div class="clearfix"></div>
 			<?php print_r($request) ?>
+
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="x_panel">

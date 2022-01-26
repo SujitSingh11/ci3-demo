@@ -10,15 +10,16 @@ class Userorder extends CI_Controller
 		$this->load->library('session');
 
 		$this->session->set_userdata('status', $this->UserOrderCallback->getStatus());
-		$this->session->set_userdata('status', $this->UserOrderCallback->getSource());
+		$this->session->set_userdata('source', $this->UserOrderCallback->getSource());
 	}
 
 	public function index()
 	{
 		$data['status'] = $this->session->userdata('status');
+		$data['source'] = $this->session->userdata('source');
 
 		$this->load->view('common/header');
-		$this->load->view('user_order_callback');
+		$this->load->view('user_order_callback', $data);
 		$this->load->view('common/footer');
 	}
 
@@ -64,6 +65,9 @@ class Userorder extends CI_Controller
 		$data["links"] = $this->pagination->create_links();
 
 		$data["order_callback_data"] = $this->UserOrderCallback->getOrderCallbackData($config["per_page"], $start, $request);
+
+		$data['status'] = $this->session->userdata('status');
+		$data['source'] = $this->session->userdata('source');
 
 		$this->load->view('common/header');
 		$this->load->view('user_order_callback', $data);
