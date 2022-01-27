@@ -68,7 +68,7 @@
 									?>
 								</select>
 							</div>
-
+							<input type="hidden" name="isAJAX" value="0">
 							<div class="row">
 								<div class="col-md-12 col-sm-12 form-group">
 									<button type="submit" class="pull-right btn btn-success">Apply Filter</button>
@@ -87,8 +87,7 @@
 	?>
 		<div class="">
 			<div class="clearfix"></div>
-			<?php print_r($request) ?>
-
+			<!-- <?php print_r($request) ?> -->
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="x_panel">
@@ -107,7 +106,8 @@
 									<div class="col-md-12 col-sm-12 col-xs-12">
 										<div class="x_panel" id="user_followup_id">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<p><?= $links ?></p>
+												<p>Ajax links: <?= $links ?></p>
+												<p>Non-Ajax links: <?= $links ?></p>
 												<table class="table table-bordered">
 													<thead>
 														<tr>
@@ -118,11 +118,11 @@
 															<th>Email</th>
 															<th>Order Type</th>
 															<th>Ticket ID</th>
-															<th>Subscription Type</th>
-															<th>Last lead Assignment Date</th>
+															<th>Status</th>
+															<th>Source</th>
 														</tr>
 													</thead>
-													<tbody>
+													<tbody id="table">
 														<?php foreach ($order_callback_data as $key => $row) { ?>
 															<tr>
 																<td><?= $row['userid']; ?></td>
@@ -132,8 +132,8 @@
 																<td><?= $row['email'] ?></td>
 																<td><?= $row['ordertype']; ?></td>
 																<td><?= $row['ticketid']; ?></td>
-																<td><?= $row['subscription_type']; ?></td>
-																<td><?= date('d-m-Y H:i:s', strtotime('+5 hour +30 minutes', strtotime($row['last_lead_assignment_date']))); ?></td>
+																<td><?= $row['status']; ?></td>
+																<td><?= $row['source']; ?></td>
 															</tr>
 														<?php } ?>
 													</tbody>
@@ -146,12 +146,11 @@
 															<th>Email</th>
 															<th>Order Type</th>
 															<th>Ticket ID</th>
-															<th>Subscription Type</th>
-															<th>Last lead Assignment Date</th>
+															<th>Status</th>
+															<th>Source</th>
 														</tr>
 													</tfoot>
 												</table>
-												<p><?= $links ?></p>
 											</div>
 											<div class="clearfix"></div>
 										</div>
@@ -166,7 +165,6 @@
 	<?php
 	}
 	?>
-
 </div>
 </div>
 <!-- /page content -->

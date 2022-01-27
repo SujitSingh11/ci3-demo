@@ -10,9 +10,9 @@
 </div>
 
 <!-- jQuery -->
-<script src="<?php echo base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="<?php echo base_url() ?>assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="<?php echo base_url() ?>assets/vendors/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -33,7 +33,6 @@
 
 <!-- Custom Theme Scripts -->
 <script src="<?php echo base_url() ?>assets/build/js/custom.min.js"></script>
-
 
 <!-- AJAX Form Validation -->
 <script>
@@ -75,6 +74,7 @@
 				});
 		});
 
+		// CSV
 		$("#exportcsv").click(function(event) {
 			event.preventDefault();
 			$("#tableRows").empty();
@@ -105,7 +105,32 @@
 				.fail(function(data) {
 					console.warn(data);
 				});
-		})
+		});
+
+		$('#paginationajax').on('click', 'a', function(e) {
+			e.preventDefault();
+			var pageno = $(this).attr('data-ci-pagination-page');
+			loadPagination(pageno);
+		});
+
+		function loadPagination(pagno) {
+			var request = <?php if (isset($request)) {
+								echo json_encode($request);
+							} ?>;
+			request['isAJAX'] = "1";
+			$.ajax({
+				url: '<?= base_url() ?>userorder/ordercallback/' + pagno,
+				type: 'post',
+				data: request,
+				dataType: 'json',
+				success: function(response) {
+					$('.pagination').html(response.links);
+					$('#table').replaceWith(response.tableRows);
+					console.log(response);
+
+				}
+			});
+		}
 	});
 </script>
 </body>

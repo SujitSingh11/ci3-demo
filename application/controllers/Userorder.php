@@ -20,7 +20,7 @@ class Userorder extends CI_Controller
 
 		$this->load->view('common/header');
 		$this->load->view('user_order_callback', $data);
-		$this->load->view('common/footer');
+		$this->load->view('common/footer', $data);
 	}
 
 	public function ordercallback()
@@ -42,7 +42,7 @@ class Userorder extends CI_Controller
 		$config['per_page'] = 10;
 		$config['uri_segment'] = 3;
 		$config['use_page_numbers'] = true;
-		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_open'] = '<ul id="paginationajax" class="pagination">';
 		$config['full_tag_close'] = '</ul>';
 		$config['first_tag_open'] = '<li>';
 		$config['first_tag_close'] = '</li>';
@@ -58,7 +58,7 @@ class Userorder extends CI_Controller
 		$config['cur_tag_close'] = '</span></li>';
 		$config['num_tag_open'] = '<li>';
 		$config['num_tag_close'] = '</li>';
-		$config['num_links'] = 3;
+		$config['num_links'] = 5;
 		$this->pagination->initialize($config);
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
 		$start = ($page - 1) * $config['per_page'];
@@ -69,8 +69,26 @@ class Userorder extends CI_Controller
 		$data['status'] = $this->session->userdata('status');
 		$data['source'] = $this->session->userdata('source');
 
-		$this->load->view('common/header');
-		$this->load->view('user_order_callback', $data);
-		$this->load->view('common/footer');
+		$table = "<tbody id='table'>";
+
+		foreach ($data["order_callback_data"] as $row) {
+			$table .= "<tr><td>" . $row['userid'] . "</td><td>" . date('d-m-Y H:i:s', strtotime('+5 hour +30 minutes', strtotime($row['created']))) . "</td><td>" . $row['name'] . "</td><td>" . $row['phone'] . "</td><td>" . $row['email'] . "</td><td>" . $row['ordertype'] . "</td><td>" . $row['ticketid'] . "</td><td>" . $row['status'] . "</td><td>" . $row['source'] . "</td></tr>";
+		}
+
+		$table .= "</tbody>";
+
+		$data['tableRows'] = $table;
+
+		if ($_SERVER['REQUEST_METHOD'] == "GET") {
+			$request['isAJAX'] = "0";
+		}
+
+		if ($request['isAJAX'] == "1") {
+			echo json_encode($data);
+		} else {
+			$this->load->view('common/header');
+			$this->load->view('user_order_callback', $data);
+			$this->load->view('common/footer');
+		}
 	}
 }
