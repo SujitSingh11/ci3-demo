@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Name:    Ion Auth
  * Author:  Ben Edmunds
@@ -19,7 +20,7 @@
  * @link       http://github.com/benedmunds/CodeIgniter-Ion-Auth
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  | -------------------------------------------------------------------------
@@ -38,9 +39,9 @@ $config['database_group_name'] = '';
 | -------------------------------------------------------------------------
 | Database table names.
 */
-$config['tables']['users']           = 'users';
+$config['tables']['users']           = 'mis_users';
 $config['tables']['groups']          = 'groups';
-$config['tables']['users_groups']    = 'users_groups';
+$config['tables']['users_groups']    = 'mis_users_groups';
 $config['tables']['login_attempts']  = 'login_attempts';
 
 /*

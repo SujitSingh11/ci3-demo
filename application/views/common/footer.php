@@ -129,8 +129,7 @@
 				success: function(response) {
 					$('.pagination').html(response.links);
 					$('#table').replaceWith(response.tableRows);
-					console.log(response);
-
+					//console.log(response);
 				}
 			});
 		}

@@ -5,9 +5,15 @@ class Userorder extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+
+		if (!$this->ion_auth->logged_in()) {
+			redirect(base_url() . 'Auth/login');
+		}
+
 		$this->load->model('UserOrderCallback');
 		$this->load->library('pagination');
 		$this->load->library('session');
+
 
 		$this->session->set_userdata('status', $this->UserOrderCallback->getStatus());
 		$this->session->set_userdata('source', $this->UserOrderCallback->getSource());

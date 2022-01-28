@@ -1,14 +1,19 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
+
+		if (!$this->ion_auth->logged_in()) {
+			redirect(base_url() . 'Auth/login');
+		}
+
 		$this->load->model('user_model');
 		$this->load->library('session');
 		// $this->load->library('pagination');
+
 	}
 
 	public function index()
