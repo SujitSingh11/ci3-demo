@@ -1,9 +1,0 @@
-
- [2020-05-18 15:18:38] Product ID 354 Prices are updated by MIS Username administrator 
- post data is {"price":"900","discount":"452","netprice":"448"}
- [2020-05-18 15:19:32] Product ID 354 Prices are updated by MIS Username administrator 
- post data is {"price":"900","discount":"453","netprice":"447"}
- [2020-05-18 15:25:43] Product ID 354 Prices are updated by MIS Username administrator 
- post data is {"price":"900","discount":"453","netprice":"447"}
- [2020-05-18 15:26:23] Product ID 354 Prices are updated by MIS Username administrator and post data is {"price":"900","discount":"453","netprice":"447"} 
- [2020-05-19 06:09:33] Product ID 355 Old Price are {"price":"900","discount":"251","netprice":"649"} and Updated Prices are {"price":"900","discount":"451","netprice":"449"} Changed by MIS Username administrator

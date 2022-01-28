@@ -10,7 +10,7 @@
 </div>
 
 <!-- jQuery -->
-<script src="<?php echo base_url() ?>assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="<?php echo base_url() ?>assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
@@ -115,6 +115,9 @@
 
 		function loadPagination(pagno) {
 			var request = <?php if (isset($request)) {
+								echo json_encode($request);
+							} else {
+								$request['isAJAX'] = "0";
 								echo json_encode($request);
 							} ?>;
 			request['isAJAX'] = "1";
